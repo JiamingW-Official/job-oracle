@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Career Tarot Wizard</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <h1>🔮 Career Tarot Wizard</h1>
+  <div id="status" class="status">
+    Status: <span id="statusText">idle</span>
+  </div>
+
+  <!-- 向导阶段 -->
+  <div id="wizard"></div>
+
+  <!-- 卡牌阶段 -->
+  <div id="cardContainer" class="hidden">
+    <div class="swipe-label left">👎 Not Interested</div>
+    <div class="swipe-label right">👍 Interested</div>
+    <div id="counters">
+      👍 <span id="likeCount">0</span> 👎 <span id="dislikeCount">0</span>
+    </div>
+    <div id="cardStack" class="card-stack"></div>
+  </div>
+
+  <!-- 报告阶段 -->
+  <div id="reportContainer" class="hidden">
+    <h2>Your Personalized Career Summary</h2>
+    <p id="reportText">Loading summary…</p>
+    <button id="restart">Restart</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

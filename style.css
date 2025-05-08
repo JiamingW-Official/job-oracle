@@ -1,0 +1,141 @@
+/* Reset & Base */
+* { margin:0; padding:0; box-sizing:border-box }
+html, body { height:100% }
+body {
+  background:#000; color:#eee;
+  font-family:sans-serif;
+  display:flex; flex-direction:column; align-items:center;
+  padding:2rem;
+}
+h1 { font-size:2.5rem; margin-bottom:1.5rem; text-align:center }
+
+/* 状态栏 */
+.status {
+  margin-bottom:1rem;
+  font-size:1rem;
+  color:#fff;
+  background:rgba(255,255,255,0.1);
+  padding:0.5rem 1rem;
+  border-radius:4px;
+}
+
+/* 默认隐藏 swipe-label 和 counters，只有卡牌阶段才显示 */
+.swipe-label,
+#counters { display:none; }
+#cardContainer:not(.hidden) .swipe-label,
+#cardContainer:not(.hidden) #counters { display:block; }
+
+/* 向导容器 */
+#wizard {
+  width:100%; max-width:600px;
+  min-height:60vh;
+  background:rgba(255,255,255,0.05);
+  border-radius:12px; padding:2rem; margin-bottom:2rem;
+  position:relative; overflow:hidden;
+}
+.step {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%) scale(0.8);
+  opacity:0; width:90%;
+  transition:transform .7s ease,opacity .7s ease;
+  pointer-events:none; text-align:center;
+}
+.step.active {
+  transform:translate(-50%,-50%) scale(1);
+  opacity:1; pointer-events:auto;
+}
+.step h2 { font-size:1.6rem; margin-bottom:1rem }
+
+/* 按钮样式 */
+.step button,
+.choice-buttons button {
+  width:100%; padding:1rem; margin:.75rem 0;
+  border:none; border-radius:6px;
+  background:linear-gradient(135deg,#a0d8ef,#c1e7ff);
+  color:#111; font-size:1.2rem; cursor:pointer;
+  transition:transform .2s;
+}
+.step button:hover,
+.choice-buttons button:hover { transform:scale(1.03) }
+
+/* 滑块 */
+input[type="range"] {
+  -webkit-appearance:none; width:100%; height:8px; margin:1rem 0;
+  background:linear-gradient(135deg,#a0d8ef,#c1e7ff);
+  border-radius:4px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance:none;
+  width:24px; height:24px; border-radius:50%;
+  background:#fff; border:4px solid #a0d8ef;
+  cursor:grab; transition:transform .2s;
+}
+input[type="range"]::-webkit-slider-thumb:hover { transform:scale(1.2) }
+
+/* 白色输入框 */
+.white-input {
+  width:100%; padding:1rem; margin:.75rem 0;
+  border:none; border-radius:6px;
+  background:#fff; color:#000; font-size:1.2rem;
+}
+
+/* 多选布局 */
+.card-select-container {
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:.75rem; padding:.5rem 0;
+}
+.select-card {
+  padding:1rem; background:#fff; color:#000;
+  border-radius:8px; text-align:center; cursor:pointer;
+  transition:transform .2s,background .2s;
+}
+.select-card:hover { transform:scale(1.05) }
+.select-card.selected { background:#a0d8ef; color:#111; }
+
+/* 卡牌阶段 */
+#cardContainer {
+  width:100%; height:100vh; background:#000;
+  display:flex; flex-direction:column; align-items:center;
+  padding-top:2rem; overflow:hidden;
+}
+.hidden { display:none }
+
+/* 滑动提示 */
+.swipe-label {
+  position:absolute; top:50%; transform:translateY(-50%);
+  font-size:1.5rem; color:rgba(255,255,255,0.6);
+  pointer-events:none; user-select:none;
+}
+.swipe-label.left { left:1rem; text-align:left; }
+.swipe-label.right { right:1rem; text-align:right; }
+
+/* 卡片堆 */
+.card-stack {
+  position:relative; width:70vw; height:60vh;
+}
+.card {
+  position:absolute; top:50%; left:50%;
+  width:25vw; height:50vh;
+  transform:translate(-50%,-50%);
+  background:#fff; border-radius:12px;
+  box-shadow:0 8px 16px rgba(0,0,0,0.4);
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  font-size:1.3rem; color:#000; user-select:none; cursor:grab;
+  transition:transform .3s ease, opacity .3s ease, background-color .3s ease;
+}
+
+/* 报告阶段 */
+#reportContainer {
+  width:100%; max-width:600px;
+  background:rgba(255,255,255,0.1);
+  border-radius:12px; padding:2rem; text-align:center;
+}
+#reportContainer h2 { margin-bottom:1rem }
+#reportText { line-height:1.5; margin-bottom:2rem }
+#restart {
+  padding:1rem 2rem; border:none; border-radius:6px;
+  background:linear-gradient(135deg,#a0d8ef,#c1e7ff);
+  color:#111; font-size:1rem; cursor:pointer;
+  transition:transform .2s;
+}
+#restart:hover { transform:scale(1.05) }
